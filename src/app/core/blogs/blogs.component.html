@@ -1,0 +1,27 @@
+<input type="text" #vid placeholder="Load Practice Dynamically" class="m-3">   
+<button class="btn btn-outline-danger m-3" (click)="navigateToSecond(vid.value)">Load</button>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="d-flex justify-content-center flex-wrap" >
+            <div *ngFor="let item of itemsDisplay" class="m-3" >
+                <div class="card c-blog-card text-white bg-danger m-3">
+                    <div class="card-header">{{item.id}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.text}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<!-- <p class="ptag">Hello</p>
+<p class="ptag">Tejas</p>
+<p class="thisisencapsulatedx">HEllo encaposulation</p> 
+
+<input type="text" #getValue >
+<button (click)="getNumber(getValue)">Save</button> -->
+

@@ -1,0 +1,27 @@
+<div class="text-center">
+<input type="text" #vid placeholder="Navigate to id in blogs" class="m-3">
+<button class="btn btn-outline-danger m-3" (click)="navigateToSecond(vid.value)">Navigate Me</button>
+</div>
+<div class="d-flex justify-content-center flex-wrap m-2 p-2">
+    <ng-container *ngFor="let card of cardListDisplay" class="p-2">
+        <div class="card m-2" style="width: 18rem;">
+            <img [src]="card.image"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{card.title}}</h5>
+                <p class="card-text">{{card.text}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- Services Pracice starts -->
+<!-- <div *ngFor="let user of users">
+    {{user.fname}}
+    {{user.lname}}
+</div> -->
+<!-- Services Pracice ends -->
+
+<!-- <p class="thisisencapsulatedx">HEllo Peter</p> -->
+
