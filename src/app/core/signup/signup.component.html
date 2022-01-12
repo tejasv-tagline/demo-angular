@@ -31,8 +31,8 @@
                 </div>
 
             </form> -->
-            <form [formGroup]="myForm" (ngSubmit)="loadLogin()" class="custom-form p-5">
-                <h1>Sign up <span class="fs-5">(Reactive form)</span></h1>
+        <form [formGroup]="myForm" (ngSubmit)="loadLogin()" class="custom-form p-5">
+                <h1>Sign up <span class="fs-5">(Reactive form with validations)</span></h1>
                 <div class="form-group" [ngClass]="{
                     'has-danger': fControl['userId'].invalid && myForm.controls['userId'].dirty,
                     'has-success': fControl['userId'].valid && myForm.controls['userId'].dirty
@@ -41,7 +41,13 @@
                     <input type="text" formControlName="userId" class="form-control">
                     <div *ngIf="fControl['userId'].touched && fControl['userId'].errors?.['required']"
                         class="custom-error">User Id is required</div>
+                    <!-- <div *ngIf="myForm.get('userId')?.errors?.['required']">Userid Required</div> -->
+                    <!-- This is another method-->
+                    <!-- <div *ngIf="myForm.controls['userId'].errors?.['required']"
+                        class="custom-error">User Id is required</div> -->
+                    <!-- another one method-->
                 </div>
+
                 <div class="form-group" [ngClass]="{
                     'has-danger': fControl['firstName'].invalid && myForm.controls['firstName'].dirty,
                     'has-success': fControl['firstName'].valid && myForm.controls['firstName'].dirty
@@ -51,6 +57,7 @@
                     <div *ngIf="fControl['firstName'].touched && fControl['firstName'].errors?.['required']"
                         class="custom-error">First name is required</div>
                 </div>
+
                 <div class="form-group" [ngClass]="{
                     'has-danger': fControl['lastName'].invalid && myForm.controls['lastName'].dirty,
                     'has-success': fControl['lastName'].valid && myForm.controls['lastName'].dirty
@@ -60,51 +67,40 @@
                     <div *ngIf="fControl['lastName'].touched && fControl['lastName'].errors?.['required']"
                         class="custom-error">Last name is required</div>
                 </div>
-                <div class="form-group" [ngClass]="{
+
+                    <div class="form-group" [ngClass]="{
                               'has-danger': fControl['password'].invalid && myForm.controls['password'].dirty,
                               'has-success': fControl['password'].valid && myForm.controls['password'].dirty
                             }">
-                    <label for="password">
-                        <label for="password">Password</label>
-                        <input type="password" formControlName="password" class="form-control">
-                        <div *ngIf="fControl['password'].touched && fControl['password'].errors?.['required']"
-                            class="custom-error">Password is required</div>
-                        <div *ngIf="fControl['password'].touched && fControl['password'].errors?.['minlength']"
-                            class="custom-error">Password must be 8 characters long ,We need another
-                            {{fControl['password'].errors?.['minlength'].requiredLength -
-                            fControl['password'].errors?.['minlength'].actualLength}} characters</div>
-                    </label>
-                </div>
-                <div class="form-group" [ngClass]="{
+                        <label for="password">
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" class="form-control">
+                            <div *ngIf="fControl['password'].touched && fControl['password'].errors?.['required']"
+                                class="custom-error">Password is required</div>
+                            <div *ngIf="fControl['password'].touched && fControl['password'].errors?.['minlength']"
+                                class="custom-error">Password must be 8 characters long ,We need another
+                                {{fControl['password'].errors?.['minlength'].requiredLength -
+                                fControl['password'].errors?.['minlength'].actualLength}} characters</div>
+                        </label>
+                    </div>
+                    <div class="form-group" [ngClass]="{
                     'has-danger': fControl['email'].invalid && myForm.controls['email'].dirty,
                     'has-success': fControl['email'].valid && myForm.controls['email'].dirty
                   }">
-                    <label for="email">Email</label>
-                    <input type="text" formControlName="email" class="form-control">
-                    <div *ngIf="fControl['email'].touched && fControl['email'].errors?.['required']"
-                        class="custom-error">Email is required</div>
-                    <div *ngIf="fControl['email'].touched && fControl['email'].errors?.['email']" class="custom-error">
-                        Enter valid email</div>
-
-                </div>
-
-                <p *ngIf="errorMessage" class="custom-form-error">Form is not properly filled</p>
-
-                <div *ngIf="errorMessage">
-                <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive"
-                    aria-atomic="true">
-                        <div class="d-flex">
-                            <div class="toast-body">
-                                Hello, world! This is a toast message.
-                            </div>
-                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                                aria-label="Close"></button>
-                        </div>
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" class="form-control">
+                        <div *ngIf="fControl['email'].touched && fControl['email'].errors?.['required']"
+                            class="custom-error">Email is required</div>
+                        <div *ngIf="fControl['email'].touched && fControl['email'].errors?.['email']"
+                            class="custom-error">
+                            Enter valid email</div>
                     </div>
-                </div>
-                <div class="form-group mt-3">
-                    <button class="btn btn-outline-danger" (click)="loadLogin()" type="submit">Sign up</button>
-                </div>
+                    <p *ngIf="errorMessage" class="custom-form-error">Form is not properly filled</p>
+
+
+                    <div class="form-group mt-3">
+                        <button class="btn btn-outline-danger" (click)="loadLogin()" type="submit">Sign up</button>
+                    </div>
             </form>
         </div>
         <div class="col-sm-3"></div>

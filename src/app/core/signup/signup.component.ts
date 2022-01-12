@@ -18,24 +18,32 @@ export class SignupComponent implements OnInit {
   myForm: FormGroup;
   errorMessage: boolean = false;
   constructor(private router: Router, private fb: FormBuilder) {
+    // this.myForm = this.fb.group({
+    //   userId: ['', [Validators.required]],
+    //   name: this.fb.group({
+    //     firstName: ['', [Validators.required]],
+    //     lastName: ['', [Validators.required]],
+    //   }),
+    //   password: ['', [Validators.required, Validators.minLength(8)]],
+    //   email: ['', [Validators.required, Validators.email]],
+    // });
+
     this.myForm = this.fb.group({
       userId: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      // name: new FormGroup({
-      //   firstName:new FormControl(),
-      //   lastName:new FormControl()
-      // }),
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
-
   ngOnInit(): void {}
 
   get fControl() {
     return this.myForm.controls;
   }
+  // get Fname(){
+  //   return this.myForm.get('name')?.get('firstName');
+  // }
 
   public loadLogin(): void {
     // console.log('this.myForm.value :>> ', this.myForm.value);

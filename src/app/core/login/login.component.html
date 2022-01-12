@@ -2,31 +2,85 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6 mt-5 pt-5">
-            <form class="row g-3 custom-form" (ngSubmit)="onSubmit(f.value)" #f="ngForm" id="formID" >
-                <h1 class="text-center">Login <span class="fs-5">(Template Driven form)</span></h1>
-                <div class="row m-0 mt-4">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6 c-form-control">
-                        <input type="text" name="userid" id="userid" ngModel placeholder="Please Enter User Id" class="form-control shadow p-3 mb-5 bg-white rounded">
-                    </div>
-                    <div class="col-sm-3"></div>
-                </div>
-                <div class="row m-0 mt-4">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6 c-form-control">
-                        <input type="password" name="password" id="password" ngModel placeholder="Please Enter Password" class="form-control shadow p-3 mb-5 bg-white rounded">
-                    </div>
-                    <div class="col-sm-3"></div>
-                </div>
-                <div class="d-flex justify-content-center mb-3">
-                    <button type="submit" class="btn btn-outline-danger" form="formID">Login</button>
-                </div>
+            <!-- <form class="row g-3 custom-form" (ngSubmit)="onSubmit(f.value)" #f="ngForm" id="formID" > -->
+            <form class="row g-3 custom-form" (ngSubmit)="onSubmit()" #f="ngForm" id="formID">
+                <!--using View child-->
+                <h1 class="text-center">Login <span class="fs-6">(Template Driven form with validations)</span></h1>
 
+                <div ngModelGroup="userDetails" userDetails="ngModelGroup">
+                    <div class="row m-0 mt-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6 c-form-control">
+                            <input type="text" name="userId" id="userId" ngModel placeholder="Please enter user id"
+                                required #userId="ngModel" class="form-control shadow p-3 bg-white rounded">
+                            <p *ngIf="!userId.valid && userId.touched" class="text-danger mt-2">* Userid is required</p>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row m-0 mt-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6 c-form-control">
+                            <textarea name="textarea" [(ngModel)]="printQuery" #textAns="ngModel" placeholder="Leave your thaughts here..." class="form-control shadow p-3 bg-white rounded"></textarea>
+                            <p *ngIf="textAns.dirty">Your review is:{{printQuery}}</p>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row m-0 mt-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6 c-form-control">
+                            <input type="email" name="email" id="email" ngModel placeholder="Please enter email"
+                                required minlength="6" #email="ngModel"
+                                class="form-control shadow p-3 bg-white rounded">
+                            <p *ngIf="!email.valid && email.touched" class="text-danger mt-2">* email is not valid</p>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row m-0 mt-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6 c-form-control">
+                            <label for="gender">select gender</label>
+                            <div *ngFor="let gender of genders">
+                                <input type="radio" name="gender" value="{{ gender }}" ngModel required><span>{{ gender
+                                    }}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row m-0 mt-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6 c-form-control">
+                            <input type="password" name="password" id="password" ngModel
+                                placeholder="Please enter password" required minlength="6" #password="ngModel"
+                                class="form-control shadow p-3 bg-white rounded">
+                            <p *ngIf="!password.valid && password.touched" class="text-danger mt-2">* Password's min
+                                length 6 is required
+                            </p>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </div>
+                <!-- <div class="alert alert-danger" role="alert" *ngIf="notValidated">
+                    Form Inputs are not valid
+                  </div> -->
+                <div class="d-flex justify-content-center mb-3">
+                    <button type="submit" [disabled]="!f.valid" class="btn btn-outline-danger"
+                        form="formID">Login</button>
+                </div>
             </form>
         </div>
         <div class="col-sm-3"></div>
     </div>
+    <div *ngIf="isSubmitted">
+        <p>UserId : {{userDetails.userId}}</p>
+        <p>Thought : {{userDetails.textView}}</p>
+        <p>Email: {{userDetails.email}}</p>
+        <p>Gender:{{userDetails.gender}}</p>
+        <p>Password:{{userDetails.password}}</p>
+    </div>
 </div>
+<!-- <button (click)="onShowData()">Show</button> -->
+<!-- <input type="text" [(ngModel)]="printVariable">
+<p>{{printVariable}}</p> -->
 
 <!-- <p class="ptag">Helo p tag</p> -->
 

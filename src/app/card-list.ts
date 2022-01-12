@@ -23,3 +23,9 @@ export interface Cards{
   text:string;
   button:string;
 }
+
+export interface UserData{
+  userId:string;
+  email:string;
+  password:string;
+}
