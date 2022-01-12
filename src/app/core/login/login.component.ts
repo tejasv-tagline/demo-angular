@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit ,OnChanges{
   public notValidated:boolean=true;
   public printVariable!:string;
   public printQuery!:string;
+  public cutMyText:string='';
 
   constructor(private router: Router) {}
 

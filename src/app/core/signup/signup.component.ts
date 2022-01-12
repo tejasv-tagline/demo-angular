@@ -28,6 +28,16 @@ export class SignupComponent implements OnInit {
     //   email: ['', [Validators.required, Validators.email]],
     // });
 
+    // FormGroup
+    // this.myForm=new FormGroup({
+    //   userId: new FormControl([Validators.required,Validators.minLength(5)]),
+    //   firstName: new FormControl(),
+    //   lastName: new FormControl(),
+    //   password: new FormControl(),
+    //   email:new FormControl()
+    // })
+
+    // FormBuilder
     this.myForm = this.fb.group({
       userId: ['', [Validators.required]],
       firstName: ['', [Validators.required]],

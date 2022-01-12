@@ -1,18 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   private subscribeOnce!: Subscription;
-  constructor() { }
-
-  ngOnInit(): void {
-   
-  }
-
+  public currentDate = new Date();
+  
+  constructor() {}
+  ngOnInit(): void {}
 }

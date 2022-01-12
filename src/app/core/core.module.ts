@@ -11,6 +11,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from './pipes/search.pipe';
+import { CustomPipe } from '../custom.pipe';
+import { ShowServerComponent } from './show-server/show-server.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,8 +26,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     LoginComponent,
     SignupComponent,
+    SearchPipe,
+    FilterPipe,
+    ShowServerComponent,
   ],
   imports: [CommonModule, CoreRoutingModule, FormsModule, ReactiveFormsModule],
-  exports: [HomeComponent, HeaderComponent, BlogsComponent, ProfileComponent],
+  exports: [HomeComponent, HeaderComponent, BlogsComponent, ProfileComponent, SearchPipe],
 })
 export class CoreModule {}

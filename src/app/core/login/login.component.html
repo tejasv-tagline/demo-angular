@@ -20,8 +20,24 @@
                     <div class="row m-0 mt-4">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6 c-form-control">
-                            <textarea name="textarea" [(ngModel)]="printQuery" #textAns="ngModel" placeholder="Leave your thaughts here..." class="form-control shadow p-3 bg-white rounded"></textarea>
-                            <p *ngIf="textAns.dirty">Your review is:{{printQuery}}</p>
+                            <textarea name="textarea" [(ngModel)]="printQuery" #textAns="ngModel"
+                                placeholder="Leave your thaughts here..."
+                                class="form-control shadow p-3 bg-white rounded"></textarea>
+                            <div *ngIf="textAns.dirty">
+                                <p class="custom-error m-0"><small> Whatever you will type ,If it
+                                        will pass 20 character than it will cutted by 20 character and transform to
+                                        upper case and colored red</small><br> </p>
+                                <div class="d-flex justify-content-between"><span [ngClass]="{
+                                    'text-danger':printQuery.length>20,
+                                    'text-primary':printQuery.length<21
+                                }">{{printQuery |search:20}}</span><span class="d-flex text-end"><span [ngClass]="{
+                                    'text-primary':printQuery.length<20,
+                                    'text-danger':printQuery.length>20,
+                                    'text-warning':printQuery.length==20
+                                }">{{printQuery.length}}</span>/20</span>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
@@ -70,6 +86,7 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
+
     <div *ngIf="isSubmitted">
         <p>UserId : {{userDetails.userId}}</p>
         <p>Thought : {{userDetails.textView}}</p>

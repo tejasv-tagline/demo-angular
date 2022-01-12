@@ -1,16 +1,18 @@
 <div class="d-flex justify-content-center">
     <input type="text" #vid placeholder="Load Profile Dynamically" class="m-3">   
     <button class="btn btn-outline-danger m-3" (click)="navigateToSecond(vid.value)">Load</button>
+    <input type="text" class="m-3" [(ngModel)]="inputtedName">
+    <button class="btn btn-outline-primary m-3" (click)="addProfile()">Add Profile</button>
 </div>
 <div class="d-flex justify-content-center flex-wrap">
-    <div *ngFor="let profile of profiles">
-        <div class="card border-success mb-3 m-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">{{profile.id}}</div>
-            <div class="card-body text-success">
+    <div *ngFor="let profile of profiles | filter:inputtedName:'title'">
+        <div class="card mb-3 m-3 text-white" [ngClass]="{'bg-primary':profile.id>5,'bg-danger':profile.id<6,'bg-warning':profile.id>10}" style="max-width: 18rem;">
+            <div class="card-header bg-transparent">{{profile.id}}</div>
+            <div class="card-body text-white">
                 <h5 class="card-title">{{profile.title}}</h5>
                 <p class="card-text">{{profile.text}}</p>
             </div>
-            <div class="card-footer bg-transparent border-success">{{profile.footer}}</div>
+            <div class="card-footer bg-transparent">{{profile.footer}}</div>
         </div>
     </div>
 </div>

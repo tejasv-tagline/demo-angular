@@ -1,0 +1,32 @@
+<div class="row mt-4">
+    <div class="col-sm-4">
+        <div class="d-flex justify-content-between">
+            <input type="text" placeholder="Search server by status" [(ngModel)]="filteredStatus"
+                class="form-control w-75">
+            <button class="btn btn-outline-primary" (click)="addServer()">Add server</button>
+            <hr>
+        </div>
+    </div>
+    <div class="col-sm-7"></div>
+</div><br>
+<ng-container *ngFor="let server of servers | filter:filteredStatus:'serverStatus'">
+    <div class="alert" role="alert" [ngClass]="
+    { 'alert-success': server.serverStatus=='online',
+    'alert-danger':server.serverStatus=='offline',
+    'alert-warning':server.serverStatus=='dead'}">
+        <div class="row text-center">
+            <div class="col-sm-1">
+                {{server.serverId}}
+            </div>
+            <div class="col-sm-5">
+                {{server.serverName}}
+            </div>
+            <div class="col-sm-3">
+                {{ server.serverStatus}}
+            </div>
+            <div class="col-sm-3">
+                {{server.serverCreated |date:'fullDate'}}
+            </div>
+        </div>
+    </div>
+</ng-container>

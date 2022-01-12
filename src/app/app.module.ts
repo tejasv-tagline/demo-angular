@@ -7,21 +7,22 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainModule } from './main/main.module';
 import { IndexComponent } from './index/index.component';
+import { CustomPipe } from './custom.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    IndexComponent
-  ],
+    AppComponent, 
+    IndexComponent, 
+    CustomPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     CoreModule,
     MainModule,
-    ReactiveFormsModule
-    ],
+    ReactiveFormsModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

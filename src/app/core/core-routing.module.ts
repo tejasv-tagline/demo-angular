@@ -7,6 +7,7 @@ import { PracticeComponent } from './practice/practice.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ShowServerComponent } from './show-server/show-server.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,14 @@ const routes: Routes = [
   {
     path: 'blogs/:id/:subId',
     component: BlogsComponent,
+  },
+  {
+    path: 'servers',
+    component: ShowServerComponent,
+  },
+  {
+    path: 'servers/:id',
+    component: ShowServerComponent,
   },
   {
     path: 'login',
